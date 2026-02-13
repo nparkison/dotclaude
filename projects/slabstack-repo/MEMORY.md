@@ -1,0 +1,22 @@
+# Auto Memory
+
+## User Identity
+- **Name:** Nik (not Nolan). Last name Parkison. Email: nparkison@gmail.com
+- **Family:** Wife Becca (32, RN, SAHM), twins Henry & Charlotte (April 2024), Jameson (Jan 21 2026, 26-week preemie), dogs Nelly & Willow (labs), cat Paul George
+- **Location:** US East Coast (ET). Lake house on Clear Lake, IN.
+- **Interests:** Basketball (Pacers), guns, fitness, outdoors/camping, beer, water/lake life, travel
+
+## Key Lessons
+- **Always proofread agent output** — Don't write deliverables from agent summaries alone. In the Gemini migration session (2026-02-09), I fabricated a "10AM-12PM secondary peak" that didn't exist in usage data, guessed an age bracket, and misclassified TS/React proficiency. Nik caught me not verifying.
+- **Verify claims against source data** before including in any document.
+- **Don't embellish** what the user says (e.g., "beer" → "craft beer / beer culture" was wrong).
+- **Avoid time-sensitive absolute statements** (e.g., "kids under 2") — use birth dates instead.
+
+## Completed Projects
+- **Gemini Migration Docs (2026-02-09):** Created 5 docs in Obsidian vault `Projects/Gemini Migration/` — Gem system prompt, complete profile, AI frameworks, professional context, and README. For use with Gemini Gems + NotebookLM ("Nik's Master AI Notebook").
+
+## Tools & Preferences
+- **AI stack:** Claude Code (primary), Gemini (Google ecosystem), Antigravity (coding agent), Perplexity (research)
+- **Google Workspace:** 2TB Pro tier personal, Workspace for work. Power user.
+- **Phone:** Pixel 8 Pro
+- See `Projects/Gemini Migration/02 - NotebookLM - Complete Profile.md` in Obsidian vault for comprehensive hardware/software details

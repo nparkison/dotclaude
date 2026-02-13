@@ -1,0 +1,20 @@
+{
+  "enabledPlugins": {
+    "context7@claude-plugins-official": false,
+    "figma@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if ! cat | grep -qE 'git (commit|add)'; then exit 0; fi; grep -rn 'SHORTCUT_API_TOKEN\\|sk-\\|api_key\\|Bearer ' --include='*.json' --include='*.env' --include='*.yaml' . && echo 'BLOCKED: Possible secret detected' && exit 1 || exit 0",
+            "statusMessage": "Scanning for secrets before commit..."
+          }
+        ]
+      }
+    ]
+  }
+}

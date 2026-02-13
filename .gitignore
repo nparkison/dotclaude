@@ -1,0 +1,33 @@
+# Sensitive files - NEVER commit
+.credentials.json
+*.credential*
+*.secret*
+*.key
+
+# Ephemeral Claude Code data
+debug/
+session-env/
+shell-snapshots/
+todos/
+tasks/
+telemetry/
+cache/
+paste-cache/
+file-history/
+stats-cache.json
+statsig/
+usage-data/
+downloads/
+ide/
+plans/
+history.jsonl
+
+# Plugin caches (re-downloadable)
+plugins/cache/
+plugins/marketplaces/
+plugins/repos/
+
+# OS files
+.DS_Store
+Thumbs.db
+*:Zone.Identifier

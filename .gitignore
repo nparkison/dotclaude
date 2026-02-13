@@ -27,6 +27,9 @@ plugins/cache/
 plugins/marketplaces/
 plugins/repos/
 
+# Runtime logs
+backup.log
+
 # OS files
 .DS_Store
 Thumbs.db

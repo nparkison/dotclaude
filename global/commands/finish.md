@@ -30,6 +30,16 @@ Update notes in the Obsidian vault at `/mnt/i/My Drive/NP-brain-backup`:
 - Note any technical learnings or gotchas discovered
 - Add any TODOs or follow-up items
 
+### Meeting Notes Index
+
+If the session involved meetings or references meeting content, check the **Meeting Notes Index** at:
+`/mnt/i/My Drive/NP-brain-backup/Projects/Slabstack/Meeting Notes/00 - Meeting Notes Index.md`
+
+- If new meeting notes were created during this session, add them to the index under the appropriate category
+- Meeting notes live in `Projects/Slabstack/Meeting Notes/` and follow the naming convention: `YYYY-MM-DD Meeting Title.md`
+- Each meeting note should have YAML frontmatter with: `date`, `time`, `timezone`, `type: meeting-notes`, `category`, `source`, and `tags`
+- When searching for context about past discussions, scan this index first — it covers meetings from Dec 2025 onward
+
 If the I: drive is not accessible, remind me to run:
 `sudo mkdir -p /mnt/i && sudo mount -t drvfs I: /mnt/i`
 

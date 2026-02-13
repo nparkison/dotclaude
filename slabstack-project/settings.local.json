@@ -143,7 +143,22 @@
       "Bash(file:*)",
       "Bash(pandoc:*)",
       "Bash(sudo apt-get install:*)",
-      "Bash(/home/npark/work/personal/dotclaude/sync.sh:*)"
+      "Bash(/home/npark/work/personal/dotclaude/sync.sh:*)",
+      "Bash(/home/npark/work/personal/dotclaude/backup-product-planning.sh)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(service cron status:*)",
+      "Bash(systemctl status:*)",
+      "Bash(crontab -l:*)",
+      "Bash(sudo mkdir:*)",
+      "Bash(sudo mount:*)",
+      "Bash(alias:*)",
+      "Bash(sudo service cron start:*)",
+      "Bash(rclone version:*)",
+      "Bash(bash:*)",
+      "Bash(crontab:*)",
+      "Bash(/home/npark/work/personal/dotclaude/backup-all.sh)"
     ],
     "deny": [],
     "ask": []

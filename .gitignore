@@ -27,6 +27,9 @@ plugins/cache/
 plugins/marketplaces/
 plugins/repos/
 
+# Machine-specific local settings (changes on nearly every session)
+settings.local.json
+
 # Runtime logs
 backup.log
 

@@ -32,14 +32,18 @@ echo "Source: $SOURCE"
 echo "Dest:   $DEST"
 echo ""
 
-# Remove old backup and replace with fresh copy
-if [[ -d "$DEST" ]]; then
-    echo "  Removing old backup..."
-    rm -rf "$DEST"
-fi
+# Copy to temp dir first, then swap — avoids data loss if cp fails partway
+DEST_TMP="${DEST}.tmp.$$"
 
 echo "  Copying files..."
-cp -r "$SOURCE" "$DEST"
+cp -r "$SOURCE" "$DEST_TMP"
+
+# Only remove old backup after new copy succeeds
+if [[ -d "$DEST" ]]; then
+    echo "  Replacing old backup..."
+    rm -rf "$DEST"
+fi
+mv "$DEST_TMP" "$DEST"
 
 # Remove Zone.Identifier files that Windows leaves behind
 find "$DEST" -name "*:Zone.Identifier" -delete 2>/dev/null || true

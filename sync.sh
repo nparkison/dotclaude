@@ -20,7 +20,7 @@ mkdir -p "$SCRIPT_DIR/global/commands"
 mkdir -p "$SCRIPT_DIR/global/plugins"
 
 # Core config files
-for f in CLAUDE.md hooks.json settings.json settings.local.json config.json; do
+for f in CLAUDE.md hooks.json settings.json config.json; do
     if [[ -f "$CLAUDE_HOME/$f" ]]; then
         cp "$CLAUDE_HOME/$f" "$SCRIPT_DIR/global/$f"
         echo "        ✓ $f"
@@ -103,17 +103,15 @@ if [[ -d "$SLABSTACK_REPO/.claude/docs" ]]; then
     echo "        ✓ docs/ ($(ls "$SLABSTACK_REPO/.claude/docs/" | wc -l) files)"
 fi
 
-for f in settings.json settings.local.json; do
-    if [[ -f "$SLABSTACK_REPO/.claude/$f" ]]; then
-        cp "$SLABSTACK_REPO/.claude/$f" "$SCRIPT_DIR/slabstack-project/$f"
-        echo "        ✓ $f"
-    fi
-done
+if [[ -f "$SLABSTACK_REPO/.claude/settings.json" ]]; then
+    cp "$SLABSTACK_REPO/.claude/settings.json" "$SCRIPT_DIR/slabstack-project/settings.json"
+    echo "        ✓ settings.json"
+fi
 
 # ─── Summary ─────────────────────────────────────────────────────
 echo ""
 echo "  [5/5] Checking for sensitive files..."
-if find "$SCRIPT_DIR" -name ".credentials.json" -o -name "*.secret" -o -name "*.key" 2>/dev/null | grep -q .; then
+if find "$SCRIPT_DIR" \( -name ".credentials.json" -o -name "*.secret" -o -name "*.key" \) 2>/dev/null | grep -q .; then
     echo "        ⚠  WARNING: Sensitive files detected! Check .gitignore."
 else
     echo "        ✓ No sensitive files found."

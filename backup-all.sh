@@ -11,9 +11,13 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG="$SCRIPT_DIR/backup.log"
-TIMESTAMP="$(date '+%Y-%m-%d %H:%M:%S')"
 
-log() { echo "[$TIMESTAMP] $*" >> "$LOG"; }
+log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$LOG"; }
+
+# Keep log from growing indefinitely (trim to last 200 lines)
+if [[ -f "$LOG" ]] && [[ $(wc -l < "$LOG") -gt 500 ]]; then
+    tail -200 "$LOG" > "$LOG.tmp" && mv "$LOG.tmp" "$LOG"
+fi
 
 log "=== backup-all started ==="
 
@@ -29,7 +33,9 @@ fi
 cd "$SCRIPT_DIR"
 
 # Stage all changes
-git add -A
+if ! git add -A 2>>"$LOG"; then
+    log "WARNING: git add failed — skipping commit"
+fi
 
 # Only commit if there are actual changes
 if ! git diff --cached --quiet; then

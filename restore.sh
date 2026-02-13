@@ -29,7 +29,7 @@ mkdir -p "$CLAUDE_HOME/commands"
 mkdir -p "$CLAUDE_HOME/skills"
 mkdir -p "$CLAUDE_HOME/plugins"
 
-for f in CLAUDE.md hooks.json settings.json settings.local.json config.json; do
+for f in CLAUDE.md hooks.json settings.json config.json; do
     if [[ -f "$SCRIPT_DIR/global/$f" ]]; then
         cp "$SCRIPT_DIR/global/$f" "$CLAUDE_HOME/$f"
         echo "        ✓ $f"
@@ -108,12 +108,10 @@ if [[ -d "$SLABSTACK_REPO" ]]; then
         echo "        ✓ docs/"
     fi
 
-    for f in settings.json settings.local.json; do
-        if [[ -f "$SCRIPT_DIR/slabstack-project/$f" ]]; then
-            cp "$SCRIPT_DIR/slabstack-project/$f" "$SLABSTACK_REPO/.claude/$f"
-            echo "        ✓ $f"
-        fi
-    done
+    if [[ -f "$SCRIPT_DIR/slabstack-project/settings.json" ]]; then
+        cp "$SCRIPT_DIR/slabstack-project/settings.json" "$SLABSTACK_REPO/.claude/settings.json"
+        echo "        ✓ settings.json"
+    fi
 else
     echo "        ⚠  Slabstack repo not found at $SLABSTACK_REPO — skipping"
     echo "           Update SLABSTACK_REPO in this script if the path differs."

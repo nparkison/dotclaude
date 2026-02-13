@@ -3,11 +3,14 @@
 # backup-product-planning.sh — Sync product-planning/ to Google Drive.
 # These contain binary files (pptx, screenshots) that don't belong in git.
 #
+# NOTE: Uses cp instead of rsync because rsync's temp-file-then-rename
+# strategy silently fails on Google Drive's drvfs mount in WSL.
+#
 set -euo pipefail
 
-SOURCE="$HOME/work/clients/Slabstack/repo/product-planning/"
+SOURCE="$HOME/work/clients/Slabstack/repo/product-planning"
 GDRIVE_BASE="/mnt/i/My Drive/NP-brain-backup"
-DEST="$GDRIVE_BASE/Slabstack/product-planning/"
+DEST="$GDRIVE_BASE/Slabstack/product-planning"
 
 # ─── Preflight ───────────────────────────────────────────────────
 if [[ ! -d "$SOURCE" ]]; then
@@ -23,23 +26,41 @@ if [[ ! -d "$GDRIVE_BASE" ]]; then
     exit 1
 fi
 
-# ─── Sync ────────────────────────────────────────────────────────
+# ─── Clean and copy ─────────────────────────────────────────────
 echo "=== product-planning backup ==="
 echo "Source: $SOURCE"
 echo "Dest:   $DEST"
 echo ""
 
-mkdir -p "$DEST"
+# Remove old backup and replace with fresh copy
+if [[ -d "$DEST" ]]; then
+    echo "  Removing old backup..."
+    rm -rf "$DEST"
+fi
 
-# rsync with:
-#   -rlptD  archive without group/owner (avoids chgrp errors on Windows mounts)
-#   -v      verbose
-#   --delete  remove files from dest that no longer exist in source
-#   --exclude skip Windows Zone.Identifier files
-rsync -rlptDv --delete \
-    --exclude="*:Zone.Identifier" \
-    "$SOURCE" "$DEST"
+echo "  Copying files..."
+cp -r "$SOURCE" "$DEST"
+
+# Remove Zone.Identifier files that Windows leaves behind
+find "$DEST" -name "*:Zone.Identifier" -delete 2>/dev/null || true
+
+# ─── Verify ──────────────────────────────────────────────────────
+src_count=$(find "$SOURCE" -type f ! -name "*:Zone.Identifier" | wc -l)
+dest_count=$(find "$DEST" -type f | wc -l)
+dest_size=$(du -sh "$DEST" | cut -f1)
+
+echo ""
+echo "  Source files: $src_count"
+echo "  Backed up:    $dest_count"
+echo "  Size:         $dest_size"
+
+if [[ "$src_count" -ne "$dest_count" ]]; then
+    echo ""
+    echo "  ⚠  WARNING: File count mismatch! Check for copy errors."
+else
+    echo "  ✓ All files backed up."
+fi
 
 echo ""
 echo "=== Backup complete ==="
-echo "Files synced to: $DEST"
+echo "Files at: $DEST"

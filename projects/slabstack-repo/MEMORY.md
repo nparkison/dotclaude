@@ -19,4 +19,13 @@
 - **AI stack:** Claude Code (primary), Gemini (Google ecosystem), Antigravity (coding agent), Perplexity (research)
 - **Google Workspace:** 2TB Pro tier personal, Workspace for work. Power user.
 - **Phone:** Pixel 8 Pro
+- **Laptop:** Lenovo ThinkPad, 64 GB RAM, WSL2 (Ubuntu)
 - See `Projects/Gemini Migration/02 - NotebookLM - Complete Profile.md` in Obsidian vault for comprehensive hardware/software details
+
+## Personal Automation
+- **Meeting notes pipeline** at `~/.local/share/gemini-sync/` — GitHub: [nparkison/meeting-notes-sync](https://github.com/nparkison/meeting-notes-sync) (private)
+  - Gemini sync (rclone cron every 6h) + Read AI webhook receiver (FastAPI, real-time)
+  - Permanent Cloudflare Tunnel: `hooks.tuckedapp.com` → localhost:8765
+  - Output: Obsidian vault `Projects/Slabstack/Meeting Notes/`
+  - **Do NOT move to OneDrive/Projects** — see session note for reasons
+  - Domain `tuckedapp.com` is on Cloudflare (nameservers: graham/lily.ns.cloudflare.com)

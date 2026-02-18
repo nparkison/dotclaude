@@ -11,6 +11,7 @@
 - **Verify claims against source data** before including in any document.
 - **Don't embellish** what the user says (e.g., "beer" → "craft beer / beer culture" was wrong).
 - **Avoid time-sensitive absolute statements** (e.g., "kids under 2") — use birth dates instead.
+- **NEVER present web research from sub-agents without verification** — (2026-02-17) Sub-agent returned 20+ URLs with fabricated quotes for AI PM job research. I reformatted and presented it to Nik without checking a single link. He used it in a conversation with his boss, then half the links were broken. **Mandatory process:** When a sub-agent returns URLs, quotes, or factual claims from web research, I MUST WebFetch/WebSearch to verify BEFORE presenting to Nik. Treat all sub-agent web research as unverified drafts, not deliverables. This is the #1 risk with delegation — polished output ≠ accurate output.
 
 ## Completed Projects
 - **Gemini Migration Docs (2026-02-09):** Created 5 docs in Obsidian vault `Projects/Gemini Migration/` — Gem system prompt, complete profile, AI frameworks, professional context, and README. For use with Gemini Gems + NotebookLM ("Nik's Master AI Notebook").

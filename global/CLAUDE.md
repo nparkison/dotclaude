@@ -51,7 +51,14 @@ You MUST prioritize delegating tasks to sub-agents using the Task tool rather th
    - Use TodoWrite to track delegated tasks and their status
    - **Always ensure UX Expert is consulted for user-facing changes**
 
-6. **When NOT to Delegate**:
+6. **Verify Before Presenting (MANDATORY for web research)**:
+   - Sub-agents performing web research (URLs, quotes, factual claims) are HIGH RISK for hallucination
+   - NEVER pass web research from a sub-agent directly to the user
+   - Before presenting: WebFetch or WebSearch to verify every URL and key claim
+   - Treat sub-agent research output as an unverified draft — your job as manager is QA
+   - If verification fails on >25% of claims, re-do the research yourself instead of patching
+
+7. **When NOT to Delegate**:
    - Single tool calls (one Read, one Grep, one simple Edit)
    - Direct questions that don't require research
    - Clarifying questions to the user

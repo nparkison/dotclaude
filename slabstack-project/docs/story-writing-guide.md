@@ -160,4 +160,16 @@ As a [role], I want [capability] so that [benefit].
 **Technical Constraints:** [Only if non-obvious hard constraints exist]
 ```
 
+---
+
+## Shortcut Defaults
+
+When creating stories in Shortcut, always use these defaults unless explicitly told otherwise:
+
+- **Team:** Engineering
+- **Workflow State:** Unprioritized (the default backlog state for the Engineering workflow)
+
+These ensure new stories land in the proper triage queue rather than accidentally appearing in active workflow states.
+
+<!-- Updated 2026-02-19: Added Shortcut defaults section — team and workflow state -->
 <!-- Created 2026-02-02: Initial story writing guide based on developer feedback about over-detailed stories in multi-truck epic -->

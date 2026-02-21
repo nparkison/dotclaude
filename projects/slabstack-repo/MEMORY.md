@@ -13,8 +13,16 @@
 - **Avoid time-sensitive absolute statements** (e.g., "kids under 2") — use birth dates instead.
 - **NEVER present web research from sub-agents without verification** — (2026-02-17) Sub-agent returned 20+ URLs with fabricated quotes for AI PM job research. I reformatted and presented it to Nik without checking a single link. He used it in a conversation with his boss, then half the links were broken. **Mandatory process:** When a sub-agent returns URLs, quotes, or factual claims from web research, I MUST WebFetch/WebSearch to verify BEFORE presenting to Nik. Treat all sub-agent web research as unverified drafts, not deliverables. This is the #1 risk with delegation — polished output ≠ accurate output.
 
+## Slabstack Repo Conventions
+- **Design docs / planning artifacts** go in `product-planning/` at repo root — NOT `docs/plans/`. The `docs/` directory does not exist and should not be created.
+
 ## Completed Projects
 - **Gemini Migration Docs (2026-02-09):** Created 5 docs in Obsidian vault `Projects/Gemini Migration/` — Gem system prompt, complete profile, AI frameworks, professional context, and README. For use with Gemini Gems + NotebookLM ("Nik's Master AI Notebook").
+
+## Path & File Delivery Preferences
+- **When Nik asks for a directory/file path:** Always provide it in **Windows File Explorer format** (e.g., `\\wsl$\Ubuntu\home\npark\...` or `I:\My Drive\...`) so he can copy-paste it directly.
+- **Also open it:** Run `explorer.exe` via Bash to open File Explorer to that exact location automatically.
+- WSL paths map: `/home/npark/...` → `\\wsl$\Ubuntu\home\npark\...`, `/mnt/i/...` → `I:\...`
 
 ## Tools & Preferences
 - **AI stack:** Claude Code (primary), Gemini (Google ecosystem), Antigravity (coding agent), Perplexity (research)
@@ -28,5 +36,14 @@
   - Gemini sync (rclone cron every 6h) + Read AI webhook receiver (FastAPI, real-time)
   - Permanent Cloudflare Tunnel: `hooks.tuckedapp.com` → localhost:8765
   - Output: Obsidian vault `Projects/Slabstack/Meeting Notes/`
+  - **Action items → Google Tasks** via `action_item_tasks.py` (enriched by Ollama)
   - **Do NOT move to OneDrive/Projects** — see session note for reasons
   - Domain `tuckedapp.com` is on Cloudflare (nameservers: graham/lily.ns.cloudflare.com)
+- **Ollama** — runs on **Windows** (desktop app), NOT in WSL
+  - WSL accesses it via localhost forwarding at `http://localhost:11434`
+  - Model: `qwen2.5:7b` (stored at `C:\Users\npark\.ollama\models\`)
+  - Already in Windows startup apps (`shell:startup`)
+  - WSL `ollama.service` exists but must stay **disabled** (not needed)
+  - If Ollama is down, meeting notes pipeline falls back to verbatim (no enrichment, nothing breaks)
+  - **GPU situation:** Laptop has Intel integrated graphics only (no discrete GPU). eGPU is AMD RX 6700 XT but NOT supported by Ollama on Windows (requires RX 6800+). **Ollama runs CPU-only in all scenarios.**
+  - **TODO:** Switch from `qwen2.5:7b` to `qwen3:4b` — smaller, newer, better at structured JSON, ~2x faster on CPU. Test `qwen3:1.7b` as well. Run: `ollama pull qwen3:4b`, update `OLLAMA_MODEL` in `.env`.

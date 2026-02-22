@@ -46,4 +46,4 @@
   - WSL `ollama.service` exists but must stay **disabled** (not needed)
   - If Ollama is down, meeting notes pipeline falls back to verbatim (no enrichment, nothing breaks)
   - **GPU situation:** Laptop has Intel integrated graphics only (no discrete GPU). eGPU is AMD RX 6700 XT but NOT supported by Ollama on Windows (requires RX 6800+). **Ollama runs CPU-only in all scenarios.**
-  - **TODO:** Switch from `qwen2.5:7b` to `qwen3:4b` — smaller, newer, better at structured JSON, ~2x faster on CPU. Test `qwen3:1.7b` as well. Run: `ollama pull qwen3:4b`, update `OLLAMA_MODEL` in `.env`.
+  - **Model choice (tested 2026-02-21):** Tested qwen3:4b and qwen3:1.7b as replacements. qwen3:4b was slower on CPU (73s vs 29s) due to thinking architecture and had unreliable field names. qwen3:1.7b was fast but misclassified items. **Sticking with qwen2.5:7b** — best balance of speed and reliability for this structured JSON task.

@@ -16,6 +16,14 @@
 ## Slabstack Repo Conventions
 - **Design docs / planning artifacts** go in `product-planning/` at repo root — NOT `docs/plans/`. The `docs/` directory does not exist and should not be created.
 
+## Obsidian Linking Conventions
+- **Always use alias syntax:** `[[Note Title|natural display text]]` — never bare `[[Note Title]]` links
+- **Aliases should read as prose:** short, lowercase, natural phrases (e.g., `[[2026-02-18 Quick Actions - Discovery & Design Research|quick actions discovery research]]`)
+- **Bidirectional linking:** When creating/updating a note, search for related existing notes and add links in BOTH directions
+- **Related Notes section:** Every substantive note (discovery docs, feature plans, session logs) should have a `## Related Notes` or `## Related Artifacts` section at the bottom with links to related content
+- **Inline links:** When a feature or topic is mentioned prominently in prose, link it inline with a natural alias — max one inline link per note per target
+- **Link at creation time:** Whenever creating or modifying an Obsidian note, always search for and add relevant links before considering the task complete
+
 ## Completed Projects
 - **Gemini Migration Docs (2026-02-09):** Created 5 docs in Obsidian vault `Projects/Gemini Migration/` — Gem system prompt, complete profile, AI frameworks, professional context, and README. For use with Gemini Gems + NotebookLM ("Nik's Master AI Notebook").
 

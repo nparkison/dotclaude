@@ -43,7 +43,20 @@ If the session involved meetings or references meeting content, check the **Meet
 If the I: drive is not accessible, remind me to run:
 `sudo mkdir -p /mnt/i && sudo mount -t drvfs I: /mnt/i`
 
-## 4. Push to GitHub
+## 4. Obsidian Note Linking
+
+If any Obsidian notes were created or modified during this session:
+
+1. Identify all new or changed notes in the vault
+2. For each note, search the vault for related content using relevant keywords — topic names, feature areas, Shortcut story IDs (e.g. SC-XXXX), meeting dates, or shared terminology
+3. Add bidirectional wiki-links using alias syntax: `[[Note Title|natural display text]]` — never bare note titles
+4. Ensure each note has a `## Related Notes` or `## Related Artifacts` section at the bottom containing these links
+5. Inline-link prominent feature or topic mentions within the note body (max one link per target per note, so the same target isn't linked repeatedly)
+6. For any note you link *to*, check if it should reciprocate with a link back to the current note — add it if missing
+
+Example alias syntax: `[[2026-02-19 Meeting Action Items|the automation design meeting]]` or `[[SC-9684 Project Config Required|the project config story]]`
+
+## 5. Push to GitHub
 
 Commit and push changes:
 - Run `git status` to review changes

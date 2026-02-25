@@ -15,10 +15,10 @@
       {
         "scope": "project",
         "projectPath": "/home/npark/work/clients/Slabstack/repo",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/context7/aa296ec81e8c",
-        "version": "aa296ec81e8c",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/context7/99e11d959269",
+        "version": "99e11d959269",
         "installedAt": "2025-12-16T13:51:04.077Z",
-        "lastUpdated": "2026-02-20T17:02:18.676Z"
+        "lastUpdated": "2026-02-24T13:00:21.347Z"
       }
     ],
     "figma@claude-plugins-official": [
@@ -45,20 +45,20 @@
     "frontend-design@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/frontend-design/aa296ec81e8c",
-        "version": "aa296ec81e8c",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/frontend-design/99e11d959269",
+        "version": "99e11d959269",
         "installedAt": "2026-02-04T16:24:21.016Z",
-        "lastUpdated": "2026-02-20T17:02:18.693Z",
+        "lastUpdated": "2026-02-24T13:00:21.359Z",
         "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
       }
     ],
     "github@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/github/aa296ec81e8c",
-        "version": "aa296ec81e8c",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/github/99e11d959269",
+        "version": "99e11d959269",
         "installedAt": "2026-02-04T16:24:31.317Z",
-        "lastUpdated": "2026-02-20T17:02:18.396Z",
+        "lastUpdated": "2026-02-24T13:00:21.353Z",
         "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
       }
     ],
@@ -75,30 +75,30 @@
     "security-guidance@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/security-guidance/aa296ec81e8c",
-        "version": "aa296ec81e8c",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/security-guidance/99e11d959269",
+        "version": "99e11d959269",
         "installedAt": "2026-02-04T16:25:16.931Z",
-        "lastUpdated": "2026-02-20T17:02:18.690Z",
+        "lastUpdated": "2026-02-24T13:00:21.356Z",
         "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
       }
     ],
     "supabase@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/supabase/aa296ec81e8c",
-        "version": "aa296ec81e8c",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/supabase/99e11d959269",
+        "version": "99e11d959269",
         "installedAt": "2026-02-04T16:25:24.145Z",
-        "lastUpdated": "2026-02-20T17:02:18.381Z",
+        "lastUpdated": "2026-02-24T13:00:21.343Z",
         "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
       }
     ],
     "slack@claude-plugins-official": [
       {
         "scope": "user",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/slack/aa296ec81e8c",
-        "version": "aa296ec81e8c",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/slack/1.0.0",
+        "version": "1.0.0",
         "installedAt": "2026-02-04T16:26:01.951Z",
-        "lastUpdated": "2026-02-20T17:02:18.386Z",
+        "lastUpdated": "2026-02-24T13:00:21.679Z",
         "gitCommitSha": "27d2b86d72da27c64585150857cee8472ad47abb"
       }
     ]

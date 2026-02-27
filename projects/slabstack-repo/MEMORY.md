@@ -16,6 +16,9 @@
 ## Slabstack Repo Conventions
 - **Design docs / planning artifacts** go in `product-planning/` at repo root — NOT `docs/plans/`. The `docs/` directory does not exist and should not be created.
 
+## Slabstack Sprint Preferences
+- **"Sprint status" = Engineering team only.** Do not pull CS, Product, or other team iterations. The relevant iteration is always the active one for the Engineering team (`eng` mention name, team ID `65f0cf94-6246-490c-a18c-a4c32ea9e57b`).
+
 ## Obsidian Linking Conventions
 - **Always use alias syntax:** `[[Note Title|natural display text]]` — never bare `[[Note Title]]` links
 - **Aliases should read as prose:** short, lowercase, natural phrases (e.g., `[[2026-02-18 Quick Actions - Discovery & Design Research|quick actions discovery research]]`)

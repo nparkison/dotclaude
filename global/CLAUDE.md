@@ -142,7 +142,7 @@ When working with project management tools, **Shortcut is for Slabstack work** a
 - **Location (WSL path)**: `/mnt/i/My Drive/NP-brain-backup`
 - **Location (Windows path)**: `I:\My Drive\NP-brain-backup`
 - Use WSL path when reading/writing notes from Claude Code
-- If the I: drive is not accessible, run: `sudo mkdir -p /mnt/i && sudo mount -t drvfs I: /mnt/i`
+- If the I: drive is not accessible, ask the user to mount it before proceeding
 
 ## Documentation
 

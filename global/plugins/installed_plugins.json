@@ -25,10 +25,10 @@
       {
         "scope": "project",
         "projectPath": "/home/npark/work/clients/Slabstack/repo",
-        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/figma/1.1.0",
-        "version": "1.1.0",
+        "installPath": "/home/npark/.claude/plugins/cache/claude-plugins-official/figma/1.2.0",
+        "version": "1.2.0",
         "installedAt": "2025-12-16T13:51:15.902Z",
-        "lastUpdated": "2026-02-12T13:51:36.864Z",
+        "lastUpdated": "2026-02-27T17:19:36.120Z",
         "gitCommitSha": "1b34fa3e162f8908e526eef5ded9d5a133772e2e"
       }
     ],

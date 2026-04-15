@@ -46,13 +46,15 @@ dotclaude fixes all three.
 
 ## Quick Start
 
+> **You don't need to read all of this.** Clone the repo, run the installer, then tell Claude Code (or Codex, Gemini CLI, etc.) to "set up dotclaude for my project." It will read the files, ask you a few questions, and configure everything. The repo is designed to be set up by an AI agent, not by hand.
+
 ```bash
 git clone https://github.com/nparkison/dotclaude.git
 cd dotclaude
 ./install.sh  # Interactive, pick what you want
 ```
 
-Then open Claude Code and run `/setup` to personalize your installation. The setup wizard asks a few questions about your tools and workflow, fills in all placeholder values, removes sections that don't apply to you, and registers hooks in your settings.json. No manual editing required.
+Then open Claude Code and run `/setup`. The wizard asks about your tools and workflow, fills in all placeholder values, removes sections that don't apply, and registers hooks in your settings.json. No manual editing required.
 
 Or cherry-pick individual files. Everything is designed to work independently.
 

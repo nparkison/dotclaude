@@ -49,7 +49,7 @@ If any Obsidian notes were created or modified during this session:
 5. Inline-link prominent feature or topic mentions within the note body (max one link per target per note, so the same target isn't linked repeatedly)
 6. For any note you link *to*, check if it should reciprocate with a link back to the current note. Add it if missing
 
-Example alias syntax: `[[2026-02-19 Meeting Action Items|the automation design meeting]]` or `[[PROJ-9684 Project Config Required|the project config story]]`
+Example alias syntax: `[[2025-01-15 Team Kickoff|the kickoff meeting]]` or `[[PROJ-1234 Config Migration|the config migration story]]`
 
 ## 5. Push to GitHub
 

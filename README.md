@@ -51,9 +51,9 @@ cd dotclaude
 ./install.sh  # Interactive, pick what you want
 ```
 
-Or cherry-pick individual files. Everything is designed to work independently.
+Then open Claude Code and run `/setup` to personalize your installation. The setup wizard asks a few questions about your tools and workflow, fills in all placeholder values, removes sections that don't apply to you, and registers hooks in your settings.json. No manual editing required.
 
-The most common starting point is `claude.md`. Drop it into `~/.claude/CLAUDE.md` and you immediately get the delegation-first behavior, draft-before-create enforcement, and memory conventions. Add hooks and skills as you need them.
+Or cherry-pick individual files. Everything is designed to work independently.
 
 ---
 
@@ -94,7 +94,7 @@ If you're a non-engineer who wants to use Claude Code seriously, start with the 
 
 PRs welcome for new hooks, skills, and patterns. The goal is a collection of battle-tested configurations, not a curated showcase. If you've built something that's survived real usage, it belongs here.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. Community contributions go in dedicated sections so it's clear what's first-party and what's community-maintained.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 

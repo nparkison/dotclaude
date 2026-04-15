@@ -137,7 +137,7 @@ install_claude_md() {
 
   install_file "$src" "$dest"
 
-  warn "ACTION REQUIRED: Open ${dest} and replace all {{PLACEHOLDER}} values with your specifics."
+  info "Run /setup in Claude Code to fill placeholder values automatically."
 }
 
 install_hooks() {
@@ -353,10 +353,10 @@ print_summary() {
     printf '\n  Backups are in: %s\n' "$BACKUP_DIR"
   fi
 
-  printf '\n%sNext steps:%s\n' "${BOLD}" "${RESET}"
-  printf '  1. Replace any {{PLACEHOLDER}} values in installed files.\n'
-  printf '  2. Register hooks and skills in ~/.claude/settings.json.\n'
-  printf '  3. Restart Claude Code to pick up the new configuration.\n'
+  printf '\n%sNext step:%s\n' "${BOLD}" "${RESET}"
+  printf '  Open Claude Code and run /setup to personalize your installation.\n'
+  printf '  The setup wizard fills placeholders, registers hooks, and removes\n'
+  printf '  sections that do not apply to your workflow. No manual editing needed.\n'
   printf '\n'
 }
 

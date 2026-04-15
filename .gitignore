@@ -5,3 +5,11 @@ Thumbs.db
 .env
 .env.*
 node_modules/
+
+# Local working files (not part of the public repo)
+MANUAL-TASKS.md
+cowork-*.md
+drafts/
+push-guard-demo.tape
+obsidian brain.gif
+.claude/

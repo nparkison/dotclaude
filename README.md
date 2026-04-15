@@ -93,7 +93,9 @@ Over time, your vault becomes a searchable knowledge base of every AI-assisted w
 
 This is what six months of AI-assisted work sessions look like in Obsidian's graph view. Every node is a session. Every connection is a project relationship. All of it built automatically.
 
-![Six months of Claude Code sessions in Obsidian](examples/screenshots/obsidian-graph.gif)
+<p align="center">
+  <img src="examples/screenshots/obsidian-graph.gif" alt="Six months of Claude Code sessions in Obsidian" />
+</p>
 
 See [obsidian/](obsidian/README.md) for the full setup guide and [example exports](obsidian/examples/).
 

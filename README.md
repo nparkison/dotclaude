@@ -33,6 +33,7 @@ dotclaude fixes all three.
 
 | Component | What it does | Count |
 |---|---|---|
+| `/setup` | **Start here.** Interactive wizard that asks about your tools and workflow, fills all placeholders, registers hooks, and removes what you don't need. Zero manual editing. | 1 skill |
 | `claude.md` | Annotated reference CLAUDE.md. Covers delegation policy, guardrails, memory conventions, and project-specific context. | 1 |
 | `hooks/` | Pre/post tool execution guards: push protection, audit logging, draft-before-create gates, commit message cleanup | 9 |
 | `skills/developer/` | Dev workflows: blast radius analysis, bug triage, release notes, PR review, security review, branch management | 7 |

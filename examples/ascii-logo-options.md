@@ -1,0 +1,85 @@
+# ASCII Logo Options for dotclaude
+
+Pick your favorite to use in the README hero section or the `install.sh` banner.
+
+---
+
+## Option 1: Clean Minimal
+
+```
+  __      __   __  __             __
+ /  \  /\  \ /  \/  \  /\ /\  /\  \
+/   \/ / \  /   /  /\/ / \_\ /  \  \
+\    \/   \/   /  / /\/  _  \\   /  /
+ \____\___/___/__/_/ /_/ \_/ \/___/
+         d o t c l a u d e
+```
+
+Works best: README hero
+
+---
+
+## Option 2: Retro Terminal
+
+```
+########################################
+#                                      #
+#  $  dotclaude                        #
+#  >> dotfiles for Claude Code         #
+#                                      #
+########################################
+```
+
+Works best: install.sh banner
+
+---
+
+## Option 3: Box Framed
+
+```
++----------------------------------+
+|                                  |
+|          d o t c l a u d e       |
+|                                  |
+|    dotfiles for Claude Code      |
+|                                  |
++----------------------------------+
+```
+
+Works best: both README hero and install.sh banner
+
+---
+
+## Option 4: Dot Themed
+
+```
+  .  .  .  .  .  .  .  .  .  .  .
+  .  d  o  t  c  l  a  u  d  e  .
+  .  .  .  .  .  .  .  .  .  .  .
+       dotfiles for Claude Code
+```
+
+Works best: README hero
+
+---
+
+## Option 5: Large Block Letters
+
+```
+ ____   __  ____  ___  __      __   _  _  ____  ____
+(    \ /  \(_  _)/ __)(  )    / _\ / )( \(    \(  __)
+ ) D ((  O ) )( ( (__ / (_/\ /    \) \/ ( ) D ( ) _)
+(____/ \__/ (__) \___)\____/ \_/\_/\____/(____/(____)
+```
+
+Works best: README hero
+
+---
+
+## Option 6: Subtle Understated
+
+```
+-- dotclaude --
+```
+
+Works best: install.sh banner (secondary mark, inline use)

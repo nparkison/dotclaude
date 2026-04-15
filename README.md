@@ -91,9 +91,11 @@ Each note includes YAML frontmatter, the full conversation (user turns, Claude r
 
 Over time, your vault becomes a searchable knowledge base of every AI-assisted work session. Use Dataview to query sessions by project, date, or tool usage. Use the graph view to see how sessions cluster around projects. The knowledge compounds instead of evaporating.
 
-See [obsidian/](obsidian/README.md) for the full setup guide and [example exports](obsidian/examples/).
+This is what six months of AI-assisted work sessions look like in Obsidian's graph view. Every node is a session. Every connection is a project relationship. All of it built automatically.
 
-<!-- ![obsidian-graph](examples/screenshots/obsidian-graph.gif) -->
+![Six months of Claude Code sessions in Obsidian](examples/screenshots/obsidian-graph.gif)
+
+See [obsidian/](obsidian/README.md) for the full setup guide and [example exports](obsidian/examples/).
 
 ---
 

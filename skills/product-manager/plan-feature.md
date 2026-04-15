@@ -116,7 +116,7 @@ Task(general-purpose): "Act as a Senior UX Expert. I need a Progressive Enhancem
 - Design references: [from Step 1, if any]
 - Existing patterns: [key findings from Step 2]
 
-**BASELINE EXPERIENCE (Phase 1 — MVP):**
+**BASELINE EXPERIENCE (Phase 1, MVP):**
 Design the accessible, low-friction version that works for all users. Optimize for:
 - First-time users (easy to learn, shallow learning curve)
 - Error prevention (hard to make mistakes)
@@ -129,7 +129,7 @@ Acceptable tradeoffs:
 - Less efficiency for power users
 - Fewer advanced options if they add complexity
 
-**ENHANCED EXPERIENCE (Phase 2-3 — Power Users):**
+**ENHANCED EXPERIENCE (Phase 2-3, Power Users):**
 Design the efficiency-maximizing enhancements layered on top of the baseline. Optimize for:
 - Power users (frequent usage, daily operations)
 - Efficiency (fewest clicks, batch operations, keyboard shortcuts)

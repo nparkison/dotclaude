@@ -353,7 +353,7 @@ If this analysis discovered dependencies NOT documented in `.claude/docs/blast-r
 4. **Provide mitigation strategies:** Don't just identify risks, suggest how to mitigate them
 5. **Consider phased rollout:** For high-risk changes, suggest feature flags or staged deployment
 6. **Think about edge cases:** What happens to historical data? What happens on rollback?
-7. **Don't over-analyze:** LOW risk changes don't need exhaustive analysis—focus effort on HIGH/CRITICAL risks
+7. **Don't over-analyze:** LOW risk changes don't need exhaustive analysis. Focus effort on HIGH/CRITICAL risks
 
 ---
 
@@ -388,4 +388,4 @@ If any of these questions can't be answered, the analysis is incomplete.
 - The universal questions ensure comprehensive coverage even without pre-documented mappings
 - Project-specific documentation makes analyses faster over time (discovery tax gradient)
 - For CRITICAL/HIGH risk changes, always recommend cross-functional review
-- Always err on the side of caution—it's better to over-analyze than to miss a critical dependency
+- Always err on the side of caution. It's better to over-analyze than to miss a critical dependency

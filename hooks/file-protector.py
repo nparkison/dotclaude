@@ -57,7 +57,7 @@ if basename in blocked_names:
 
 if "/.git/" in file_path or file_path.endswith("/.git"):
     print(
-        f"BLOCKED: '{file_path}' is inside .git/ — do not modify git internals.",
+        f"BLOCKED: '{file_path}' is inside .git/. Do not modify git internals.",
         file=sys.stderr,
     )
     sys.exit(2)

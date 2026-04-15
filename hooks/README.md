@@ -4,13 +4,13 @@
 
 Hooks are scripts that Claude Code runs automatically at defined points in a session. They can intercept tool calls before they execute, observe them after, react to user input, fire when a session starts or ends, or trigger on desktop notifications. This gives you programmatic control over Claude's behavior without modifying prompts or relying on Claude to remember rules.
 
-Each hook is a shell command — typically a Python script — that receives a JSON payload on stdin describing the event. The hook reads that payload, makes a decision, and communicates back through its exit code and stdout/stderr. Claude Code reads the result and proceeds accordingly.
+Each hook is a shell command (typically a Python script) that receives a JSON payload on stdin describing the event. The hook reads that payload, makes a decision, and communicates back through its exit code and stdout/stderr. Claude Code reads the result and proceeds accordingly.
 
-Hooks can take three actions: **allow** (exit code 0 — let the tool call proceed), **block** (exit code 2 — cancel the tool call and show an error message from stderr to the user), or **ask** (output a JSON object with `permissionDecision: "ask"` — pause and surface a permission prompt so the user can approve or deny).
+Hooks can take three actions: **allow** (exit code 0, let the tool call proceed), **block** (exit code 2, cancel the tool call and show an error message from stderr to the user), or **ask** (output a JSON object with `permissionDecision: "ask"`, pause and surface a permission prompt so the user can approve or deny).
 
 Hook types map to lifecycle events: `PreToolUse` fires before a tool executes, `PostToolUse` fires after, `UserPromptSubmit` fires when the user submits a message, `Notification` fires when Claude needs user input, `Stop` fires when a session ends, and `SessionStart` fires when a session starts (with a `compact` matcher to target post-compaction restarts specifically). Hooks are registered in `~/.claude/settings.json` under the `hooks` key, scoped to an event type and optionally filtered by a `matcher` (a regex or tool name pattern).
 
-Hooks run synchronously by default and block execution until they exit, so keep them fast. The `async: true` field in settings.json makes a hook fire-and-forget — useful for Stop hooks that write to disk or call external services.
+Hooks run synchronously by default and block execution until they exit, so keep them fast. The `async: true` field in settings.json makes a hook fire-and-forget, useful for Stop hooks that write to disk or call external services.
 
 ---
 
@@ -207,7 +207,7 @@ sys.exit(0)
 ```
 
 **Rules of thumb:**
-- Always wrap `json.load(sys.stdin)` in a try/except and exit 0 on parse failure — don't let a malformed payload block work.
+- Always wrap `json.load(sys.stdin)` in a try/except and exit 0 on parse failure. Don't let a malformed payload block work.
 - Never exit 2 from a Stop hook. If the hook fails, log and exit 0 so the session can close.
 - Keep PreToolUse hooks fast. They run on every matching tool call; a slow hook adds latency to everything.
 - Test with `echo '{"tool_name":"Bash","tool_input":{"command":"echo hi"}}' | python3 your-hook.py`.
@@ -218,7 +218,7 @@ sys.exit(0)
 
 ### `audit-log.py`
 
-**What it does:** Appends a timestamped line to `~/.claude/tool-audit.log` on every tool call: timestamp, session ID (first 8 chars), tool name, and working directory. Never blocks — failures are silently ignored.
+**What it does:** Appends a timestamped line to `~/.claude/tool-audit.log` on every tool call: timestamp, session ID (first 8 chars), tool name, and working directory. Never blocks. Failures are silently ignored.
 
 **Event:** PostToolUse, matcher: `""` (all tools)
 
@@ -252,7 +252,7 @@ sys.exit(0)
 
 **Event:** PreToolUse, matcher: your MCP tool names (e.g. `mcp__linear__save_issue|mcp__slack__send_message`)
 
-**Customize:** The hook itself has no tool-specific logic — it always returns "ask". The real customization is in `settings.json`: set the `matcher` to exactly the MCP tool names that interact with your shared systems. Update `permissionDecisionReason` to name those tools or link to your team's policy.
+**Customize:** The hook itself has no tool-specific logic. It always returns "ask". The real customization is in `settings.json`: set the `matcher` to exactly the MCP tool names that interact with your shared systems. Update `permissionDecisionReason` to name those tools or link to your team's policy.
 
 ---
 
@@ -272,7 +272,7 @@ sys.exit(0)
 
 **Event:** SessionStart, matcher: `compact`
 
-**Customize:** Edit the `print()` block. Replace the example rules with your own most-violated instructions. Keep it to 4-6 rules — the ones you've actually had to correct Claude on. Format as a numbered list with a bold rule name and a plain-English description.
+**Customize:** Edit the `print()` block. Replace the example rules with your own most-violated instructions. Keep it to 4-6 rules: the ones you've actually had to correct Claude on. Format as a numbered list with a bold rule name and a plain-English description.
 
 ---
 
@@ -288,7 +288,7 @@ sys.exit(0)
 
 ### `notify.py`
 
-**What it does:** Fires when Claude Code needs user input (the Notification event). Sends a terminal bell character immediately as a fallback, then launches a PowerShell balloon notification via `powershell.exe`. Designed for WSL — the PowerShell call is wrapped in try/except so it fails silently on pure Linux.
+**What it does:** Fires when Claude Code needs user input (the Notification event). Sends a terminal bell character immediately as a fallback, then launches a PowerShell balloon notification via `powershell.exe`. Designed for WSL. The PowerShell call is wrapped in try/except so it fails silently on pure Linux.
 
 **Event:** Notification, matcher: `""` (all notifications)
 

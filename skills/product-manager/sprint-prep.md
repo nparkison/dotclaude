@@ -34,7 +34,7 @@ Use the {{PM_TOOL}} API to:
 
 For every story in the active iteration, evaluate against these detection criteria:
 
-**Tier 1 — Action Required (ALWAYS flag these):**
+**Tier 1: Action Required (ALWAYS flag these):**
 
 | Signal | How to Detect | Threshold |
 |--------|--------------|-----------|
@@ -42,7 +42,7 @@ For every story in the active iteration, evaluate against these detection criter
 | Unowned in sprint | `owner_ids` is empty array | Any story in active iteration |
 | Stale in sprint | `updated_at` > 7 days ago AND `started` is false | 7+ days without update, not started |
 
-**Tier 2 — Worth Reviewing (flag if present):**
+**Tier 2: Worth Reviewing (flag if present):**
 
 | Signal | How to Detect | Threshold |
 |--------|--------------|-----------|
@@ -76,7 +76,7 @@ For stories flagged in Tier 1 and Tier 2, search Slack for recent mentions:
 3. Note any customer names, urgency language, or timeline expectations
 4. Add this context to the story's entry in the briefing
 
-**This step enriches the briefing with real customer pressure signals — the kind of context that turns a list of stale tickets into actionable triage.**
+**This step enriches the briefing with real customer pressure signals: the kind of context that turns a list of stale tickets into actionable triage.**
 
 ---
 
@@ -88,7 +88,7 @@ Present the briefing in this format:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- SPRINT PREP — [Sprint Name] (ends [date])
+ SPRINT PREP: [Sprint Name] (ends [date])
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 SPRINT HEALTH SNAPSHOT
@@ -97,7 +97,7 @@ SPRINT HEALTH SNAPSHOT
 
 ──── PRIORITY TRIAGE (needs a decision before planning) ───
 
-1. [STORY-ID] — [Story Title]
+1. [STORY-ID]: [Story Title]
    [Signal]: [details] | [Owner status] | [Estimate status]
    Context: [Customer mentions, related completed work, epic status]
    → Recommend: [Specific recommended action]
@@ -106,7 +106,7 @@ SPRINT HEALTH SNAPSHOT
 
 ──── REVIEW (trending toward stale) ────────────────────────
 
-3. [STORY-ID] — [Story Title]
+3. [STORY-ID]: [Story Title]
    [Signal]: [details]
    → [Suggested check-in or action]
 
@@ -131,11 +131,11 @@ Stories in "To Do" with no sprint, no owner, older than 30 days:
 ```
 
 **Formatting rules:**
-- Priority Triage section: rich context + recommended action per story. No cap on items — show all Tier 1 flags.
+- Priority Triage section: rich context + recommended action per story. No cap on items; show all Tier 1 flags.
 - Review section: lighter context for Tier 2 items.
 - Full Inventory: compact table with EVERY flagged story. Include {{PM_TOOL}} links.
 - Backlog Orphans: complete list, sorted oldest first.
-- Each recommended action should be specific and decisive: "Assign to [person]", "Move to backlog with customer comms", "Archive — superseded by [other story]", "Needs grooming session", etc.
+- Each recommended action should be specific and decisive: "Assign to [person]", "Move to backlog with customer comms", "Archive (superseded by [other story])", "Needs grooming session", etc.
 
 ---
 
@@ -205,5 +205,5 @@ After presenting the briefing and creating the Obsidian note, provide:
 - **All sub-agents MUST use `model: "sonnet"`.** Never use haiku.
 - **Never update {{PM_TOOL}}** (no story edits, no comments, no status changes) unless explicitly instructed.
 - **Context is king.** The value of this command over a dumb script is the cross-referencing: connecting a stale story to a Slack mention to a completed related epic. Invest time in making those connections.
-- **Be opinionated in recommendations.** Don't just flag problems — suggest specific actions. "Assign to [person] based on their work on [related story]" is better than "needs an owner."
+- **Be opinionated in recommendations.** Don't just flag problems. Suggest specific actions. "Assign to [person] based on their work on [related story]" is better than "needs an owner."
 - **{{PM_TOOL}} story links** format: configure for your instance URL.

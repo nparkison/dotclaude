@@ -60,7 +60,7 @@ SESSIONS_SUBDIR = "Sessions/Claude Code"
 SESSIONS_DIR = VAULT_ROOT / SESSIONS_SUBDIR
 RAW_DIR = SESSIONS_DIR / "_raw"
 
-# Standard Claude Code projects directory — do not change.
+# Standard Claude Code projects directory. Do not change.
 CLAUDE_PROJECTS = Path.home() / ".claude" / "projects"
 
 # Log file for debugging export issues.
@@ -432,7 +432,7 @@ def main():
         sys.exit(0)
 
     if not VAULT_ROOT.exists():
-        log("FAIL", f"vault not found at {VAULT_ROOT} — set OBSIDIAN_VAULT env var or update VAULT_ROOT_FALLBACK in the script", session_id)
+        log("FAIL", f"vault not found at {VAULT_ROOT}. Set OBSIDIAN_VAULT env var or update VAULT_ROOT_FALLBACK in the script", session_id)
         sys.exit(0)
 
     data = parse_session(jsonl_path)

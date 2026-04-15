@@ -5,7 +5,7 @@ Fires on UserPromptSubmit. If the user's message mentions creating or opening
 a PR and the repo has a PR template at .github/pull_request_template.md,
 injects additionalContext instructing Claude to read and match that template.
 
-No configuration needed — the hook detects the template automatically based
+No configuration needed. The hook detects the template automatically based
 on the current working directory. Works with any repository that follows the
 standard GitHub PR template location.
 

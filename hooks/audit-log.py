@@ -2,7 +2,7 @@
 """Log all tool usage to an audit file.
 
 Appends tool name + timestamp to ~/.claude/tool-audit.log on every tool call.
-Designed to be fast — just a file append, never blocks execution.
+Designed to be fast: just a file append, never blocks execution.
 
 Customize:
   - Change `log_path` to write logs elsewhere.

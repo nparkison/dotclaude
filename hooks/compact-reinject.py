@@ -11,7 +11,7 @@ HOW IT WORKS:
 
 HOW TO CUSTOMIZE:
   Edit the print() block below. Replace the example rules with YOUR rules.
-  Keep the format — numbered list, bold rule name, plain-English description.
+  Keep the format: numbered list, bold rule name, plain-English description.
   Aim for 4–6 rules: the ones you've had to correct most often.
 
 SETUP (.claude/settings.json):

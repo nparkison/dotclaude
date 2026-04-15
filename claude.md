@@ -1,11 +1,11 @@
-# CLAUDE.md — Reference & Teaching Guide
+# CLAUDE.md: Reference & Teaching Guide
 
 This file is a **heavily annotated reference CLAUDE.md** for the `dotclaude` public repository.
 It is a teaching document, not a drop-in config. Every section explains the *why* behind the pattern,
 not just the *what*.
 
 **How to use this file:**
-1. Read the `<!-- WHY: ... -->` comments — they are the actual documentation.
+1. Read the `<!-- WHY: ... -->` comments (they are the actual documentation).
 2. Search for `{{PLACEHOLDER}}` values and replace them with your specifics.
 3. Delete sections that don't apply to your workflow. Fewer, sharper instructions beat a long generic list.
 4. Put your final CLAUDE.md at `~/.claude/CLAUDE.md` (global) or `.claude/CLAUDE.md` (per-project).
@@ -13,7 +13,7 @@ not just the *what*.
 ---
 
 <!-- WHY: Setting the role up front shapes every response Claude gives. Without this line, Claude defaults
-to a generic helpful-assistant persona — which means it hedges, asks unnecessary clarifying questions,
+to a generic helpful-assistant persona, which means it hedges, asks unnecessary clarifying questions,
 and underestimates what you already know. One sentence changes the baseline posture for the entire session. -->
 
 ## Role
@@ -22,7 +22,7 @@ Senior Software Engineer at {{YOUR_ORG}}.
 
 ---
 
-<!-- WHY: Without an explicit model policy, sub-agents default to whatever model the harness picks — often
+<!-- WHY: Without an explicit model policy, sub-agents default to whatever model the harness picks, often
 the most expensive one for simple tasks, or (worse) a cheap one for critical implementation work. Spelling
 this out gives you cost predictability and quality guarantees at the same time. Adjust per your budget. -->
 
@@ -41,7 +41,7 @@ or if the user explicitly requests it.
 
 <!-- WHY: This is the single highest-leverage pattern in CLAUDE.md. It transforms Claude from a chatbot that
 does one thing at a time into a manager that orchestrates parallel specialized work. The wall-clock speedup
-alone is worth it — but the bigger gain is that you stop bottlenecking on Claude's context window.
+alone is worth it, but the bigger gain is that you stop bottlenecking on Claude's context window.
 Each sub-agent gets a clean slate and can go deep without noise from the rest of the session. -->
 
 ## Delegation-First Workflow
@@ -56,7 +56,7 @@ orchestrates specialists rather than doing everything directly.
 **1. Default to Delegation**
 
 For any non-trivial task, the first instinct should be to spawn a sub-agent. Only do work directly if
-it is genuinely simpler than delegation — a single file read, a quick factual answer, a one-liner edit.
+it is genuinely simpler than delegation: a single file read, a quick factual answer, a one-liner edit.
 
 **2. Parallel Execution**
 
@@ -119,7 +119,7 @@ Sub-agents performing web research are high-risk for hallucination. Never pass U
 claims from a sub-agent directly to the user without verification. Before presenting:
 
 - WebFetch or WebSearch every URL and key claim.
-- Treat sub-agent research as an unverified draft — your job is QA.
+- Treat sub-agent research as an unverified draft, your job is QA.
 - If more than ~25% of claims fail verification, redo the research yourself.
 
 ### Example Workflow
@@ -141,7 +141,7 @@ Manager Claude:
 ---
 
 <!-- WHY: Engineers waste hours investigating bugs that already have open tickets. The cheapest possible
-check — a 30-second search in your PM tool — can immediately surface "we're already on it, here's the PR."
+check (a 30-second search in your PM tool) can immediately surface "we're already on it, here's the PR."
 Running this check BEFORE any codebase investigation is the highest-ROI habit in this entire file.
 The pattern also prevents duplicate stories, which erodes team trust in the backlog. -->
 
@@ -161,7 +161,7 @@ Run multiple searches in parallel to cast a wide net.
 ### Step 2: Report Matches
 
 If related stories exist, surface them immediately with: status, owner, link, and any sprint context.
-This lets the user respond "we're already on it" within minutes — not after a 30-minute investigation.
+This lets the user respond "we're already on it" within minutes (not after a 30-minute investigation).
 
 ### Step 3: Investigate (only if needed)
 
@@ -178,14 +178,14 @@ User: "The export button is broken for large datasets"
 
 Manager Claude:
 1. Task(Bash): "Search {{PM_TOOL}} for 'export', 'large dataset', 'download timeout'"
-2. Report: "Found SC-1234 'Fix export timeout for large reports' — In Dev, owned by [Engineer]."
+2. Report: "Found SC-1234 'Fix export timeout for large reports', In Dev, owned by [Engineer]."
 3. ONLY IF no match: Task(Explore): "Investigate the export button behavior in {{YOUR_REPO}}"
 ```
 
 ---
 
 <!-- WHY: AI creating items in shared team systems without review is the fastest way to destroy trust.
-A Shortcut story with wrong details, a GitHub PR with a bad description, a Slack message sent prematurely —
+A Shortcut story with wrong details, a GitHub PR with a bad description, a Slack message sent prematurely.
 these affect real people and are often hard to undo. The Draft-Before-Create rule adds one approval gate
 and eliminates surprises. This is non-negotiable in any team environment. -->
 
@@ -196,7 +196,7 @@ and eliminates surprises. This is non-negotiable in any team environment. -->
 **Never create items in {{PM_TOOL}}, GitHub (PRs/issues), Slack, or any shared external system
 without explicit user approval.**
 
-Mandatory process — no exceptions:
+Mandatory process (no exceptions):
 
 1. **Draft** the full content (title, description, labels, assignee, etc.) in the conversation.
 2. **Present** the draft to the user for review.
@@ -204,9 +204,9 @@ Mandatory process — no exceptions:
 4. **Only then** create the item via API or CLI.
 
 This applies even if:
-- The user says "create a story for X" — draft it first, then create after approval.
-- The content was discussed and agreed upon — the written form still needs review.
-- It seems obvious what the story should say — draft it anyway.
+- The user says "create a story for X." Draft it first, then create after approval.
+- The content was discussed and agreed upon. The written form still needs review.
+- It seems obvious what the story should say. Draft it anyway.
 
 **This also applies to comments** on existing tickets, PRs, and Slack threads. Draft first, approve, post.
 
@@ -224,7 +224,7 @@ understand intent at a glance. -->
 
 - Follow [Conventional Commits](https://www.conventionalcommits.org/) format: `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`, etc.
 - Keep the subject line under 72 characters.
-- Use the body for *why*, not *what* — the diff shows what changed.
+- Use the body for *why*, not *what*. The diff shows what changed.
 - **Never** include "Generated with Claude Code" or "Co-Authored-By: Claude" attribution unless
   the user explicitly requests it.
 
@@ -246,7 +246,7 @@ understand intent at a glance. -->
 
 <!-- WHY: Claude's context is ephemeral. When the session ends or context compacts, every insight,
 decision, and design rationale disappears. Without a habit of writing things down to a persistent system,
-you repeat the same research conversations over and over. Even a lightweight note — "decided X because Y" —
+you repeat the same research conversations over and over. Even a lightweight note ("decided X because Y")
 saves hours across a project's lifetime.
 This section is deliberately generic: point it at whatever note system you actually use. -->
 
@@ -288,10 +288,10 @@ Replace these placeholders throughout the file:
 
 ### What to keep as-is
 
-- The Delegation-First Workflow — this applies universally regardless of stack or org.
-- The Draft-Before-Create rule — this applies to any shared external system.
-- The bug triage order — "search before investigate" saves time on every team.
-- The git safety defaults — these prevent the most common automated-commit mistakes.
+- The Delegation-First Workflow: this applies universally regardless of stack or org.
+- The Draft-Before-Create rule: this applies to any shared external system.
+- The bug triage order: "search before investigate" saves time on every team.
+- The git safety defaults: these prevent the most common automated-commit mistakes.
 
 ### What to cut
 
@@ -304,7 +304,7 @@ Replace these placeholders throughout the file:
 
 - Codebase-specific conventions (e.g., "all API routes go in `src/routes/`", "use Zod for all input validation")
 - Testing requirements (e.g., "all new features need unit tests before PR")
-- Code review preferences (e.g., "suggest, don't mandate — reviewers are the final decision-makers")
+- Code review preferences (e.g., "suggest, don't mandate, reviewers are the final decision-makers")
 - Deploy and environment notes if Claude needs to run builds or tests
 
 **Keep it short.** The best CLAUDE.md is the one Claude actually follows. Every line you add is

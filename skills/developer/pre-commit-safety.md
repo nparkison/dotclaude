@@ -169,7 +169,7 @@ If high-risk files changed:
 Run the project's test suite. Check `package.json`, `Makefile`, or project README for the correct test command. Common patterns:
 
 ```bash
-# Node/TypeScript projects — check package.json scripts
+# Node/TypeScript projects: check package.json scripts
 npm test
 # or
 yarn test
@@ -182,7 +182,7 @@ go test ./...
 # Python projects
 pytest
 
-# For other projects — check README or CI configuration for the correct command
+# For other projects: check README or CI configuration for the correct command
 ```
 
 If tests fail, **STOP** and report failures. Do not proceed to commit.

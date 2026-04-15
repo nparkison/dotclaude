@@ -22,7 +22,7 @@ Dotfiles for Claude Code. A battle-tested configuration that transforms Claude f
 Out of the box, Claude Code is powerful but unguarded. Three patterns show up immediately once you start using it seriously:
 
 - **No guardrails.** Claude pushes to production, creates PRs without asking, appends commit attribution you never requested, and takes irreversible actions in shared systems without a review gate. One missing instruction and something you didn't intend is already live.
-- **No persistence.** Every session starts from zero. Claude doesn't know your codebase conventions, your team's review preferences, or how your project is organized. You re-explain the same context, session after session.
+- **No persistence.** Every session starts from zero. Claude doesn't know your codebase conventions, your team's review preferences, or how your project is organized. You re-explain the same context, session after session. And when a session ends, everything you discussed vanishes. No searchable history, no way to connect today's work to last month's investigation.
 - **No workflow.** Default Claude works as an individual contributor. One task at a time, no delegation, no parallelism, no structure. There's nothing stopping it from doing everything itself when the right answer is to orchestrate specialists.
 
 dotclaude fixes all three.
@@ -39,7 +39,7 @@ dotclaude fixes all three.
 | `skills/product-manager/` | PM force multipliers: story writing, sprint prep, CS documentation, feature delivery | 4 |
 | `patterns/` | Philosophy docs: delegation-first, draft-before-create, triage-first, UX review gates | 5 |
 | `docs/` | Convention doc templates. Codify your codebase knowledge so Claude stops guessing | 5 |
-| `obsidian/` | Persistent knowledge layer: session export pipeline, memory management | - |
+| `obsidian/` | Auto-export every session to Obsidian. Searchable history, project wikilinks, graph view integration | 1 hook + templates |
 
 ---
 
@@ -69,13 +69,41 @@ The result is that you stop babysitting a chatbot and start orchestrating a syst
 
 ---
 
+## Persistent Knowledge: The Obsidian Layer
+
+Every Claude Code session disappears when you close it. The decisions you made, the files you explored, the dead ends you tried. Gone. You can scroll back through your terminal, but there's no searchable history, no way to connect today's work to last week's investigation, no way to spot patterns across months of usage.
+
+dotclaude fixes this with an automatic Obsidian export pipeline. A Stop hook fires when every session ends, parses the raw session data, and writes a structured note to your vault. No manual step. No copy-paste.
+
+Each note includes YAML frontmatter, the full conversation (user turns, Claude responses, tools called), a ranked list of every tool used, every file touched, and a link to the raw transcript. Sessions are auto-tagged by project based on your working directory, and wikilinks connect session notes to your project notes.
+
+```
+┌──────────────┐     ┌──────────────────┐     ┌───────────────────┐
+│ Claude Code  │────▶│ session-to-      │────▶│ Obsidian Vault    │
+│ Session ends │     │ obsidian.py      │     │                   │
+│              │     │ (Stop hook)      │     │ Sessions/         │
+│ JSONL on     │     │                  │     │   note.md         │
+│ disk         │     │ Parses JSONL     │     │   _raw/data.jsonl │
+└──────────────┘     │ Strips sys tags  │     └───────────────────┘
+                     │ Writes markdown  │
+                     └──────────────────┘
+```
+
+Over time, your vault becomes a searchable knowledge base of every AI-assisted work session. Use Dataview to query sessions by project, date, or tool usage. Use the graph view to see how sessions cluster around projects. The knowledge compounds instead of evaporating.
+
+See [obsidian/](obsidian/README.md) for the full setup guide and [example exports](obsidian/examples/).
+
+<!-- ![obsidian-graph](examples/screenshots/obsidian-graph.gif) -->
+
+---
+
 ## Component Deep Dives
 
 - [Hooks](hooks/README.md): Pre/post tool execution guards
 - [Skills](skills/README.md): Reusable workflow definitions
 - [Patterns](patterns/): Philosophy and methodology docs
 - [Convention Docs](docs/README.md): Templates for codifying codebase knowledge
-- [Obsidian Integration](obsidian/README.md): Persistent knowledge pipeline
+- [Obsidian Integration](obsidian/README.md): Full setup guide and pipeline docs
 - [Examples](examples/): Before/after comparisons and session transcripts
 
 ---

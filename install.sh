@@ -245,22 +245,22 @@ install_obsidian_integration() {
 
   if [ ! -d "$vault_path" ]; then
     warn "Vault path does not exist: ${vault_path}"
-    warn "Installing anyway. Update VAULT_PATH in the hook file once the vault is accessible."
+    warn "Installing anyway. Edit VAULT_ROOT_FALLBACK in the hook file once the vault is accessible."
   fi
 
   ensure_dir "${CLAUDE_DIR}/hooks"
   backup_if_exists "$hook_dest" || true
 
-  # Copy the hook and patch the vault path placeholder in one step.
-  if sed "s|{{VAULT_PATH}}|${vault_path}|g" "$hook_src" > "$hook_dest"; then
+  # Copy the hook and patch the fallback vault path in one step.
+  # The hook uses VAULT_ROOT_FALLBACK = Path("/path/to/your/obsidian/vault")
+  if sed "s|/path/to/your/obsidian/vault|${vault_path}|g" "$hook_src" > "$hook_dest"; then
     success "Installed Obsidian hook to ${hook_dest}"
     success "Vault path set to: ${vault_path}"
     INSTALLED=$((INSTALLED + 1))
   else
-    # sed may not patch anything if the placeholder is absent; still install the file.
     if cp "$hook_src" "$hook_dest"; then
       success "Installed Obsidian hook to ${hook_dest}"
-      warn "Could not auto-patch vault path. Set VAULT_PATH manually in ${hook_dest}"
+      warn "Could not auto-patch vault path. Edit VAULT_ROOT_FALLBACK in ${hook_dest}"
       INSTALLED=$((INSTALLED + 1))
     else
       error "FAILED to install Obsidian hook."
@@ -269,7 +269,7 @@ install_obsidian_integration() {
     fi
   fi
 
-  warn "ACTION REQUIRED: Register session-to-obsidian.py in settings.json under the PostToolUse or Stop hook."
+  warn "ACTION REQUIRED: Register session-to-obsidian.py in settings.json under the Stop hook."
 }
 
 # ---------------------------------------------------------------------------
@@ -328,7 +328,11 @@ parse_selection() {
     fi
   done
 
-  echo "${selected[*]:-}"
+  if [ ${#selected[@]} -eq 0 ]; then
+    echo ""
+  else
+    echo "${selected[*]}"
+  fi
 }
 
 # ---------------------------------------------------------------------------

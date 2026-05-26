@@ -1,0 +1,15 @@
+dotclaude
+Copyright 2026 Nik Parkison
+
+This product includes software, prompts, skills, hooks, patterns,
+templates, and documentation originally developed by Nik Parkison
+(https://github.com/nparkison/dotclaude).
+
+Attribution is required in derivative works per Section 4 of the
+Apache License, Version 2.0. Derivative works (including forks,
+adaptations, and substantial reuse of skills, patterns, hooks, or
+templates) must include a readable copy of this NOTICE file and
+visible attribution in their README or equivalent, in the form:
+
+  Based on dotclaude by Nik Parkison
+  (https://github.com/nparkison/dotclaude)
